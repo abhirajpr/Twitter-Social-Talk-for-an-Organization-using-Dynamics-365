@@ -1,0 +1,1043 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Social Talk for Suyati</title>
+    <meta name="description" content="Social Talk for Suyati ">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;amp;lang=en" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        #invisible{
+         visibility: hidden;
+        }
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -120px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30%;
+            font-size: 17px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        #snackbar1 {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30%;
+            font-size: 17px;
+        }
+
+        #snackbar1.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadein {
+            from {
+                bottom: 0;
+                opacity: 0;
+            }
+            to {
+                bottom: 30px;
+                opacity: 1;
+            }
+        }
+
+        @-webkit-keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeout {
+            from {
+                bottom: 30px;
+                opacity: 1;
+            }
+            to {
+                bottom: 0;
+                opacity: 0;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        .wrap {
+            display: table-cell;
+
+            font: normal normal 18px/1.4 Helvetica, Roboto, "Segoe UI", Calibri, sans-serif;
+            color: #121212;
+        }
+
+        h5 {
+            margin: 5px;
+            !important
+        }
+
+        .xcontainer {
+            margin-left: 25%;
+        }
+
+        /*button{
+    margin-left: 20%; !important
+}*/
+
+        .headings1 {
+            margin-left: 15%;
+            !important
+        }
+
+        .container1 {
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 5px;
+            border: 1px solid #bababa;
+            padding: 18px 20px 30px 25px;
+            width: 660px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-align: left;
+            !important box-shadow: 3px 3px 4px #888888;
+        }
+
+        .container2 {
+            box-sizing: border-box;
+            position: relative;
+            border-radius: 5px;
+            border: 1px solid #bababa;
+            padding: 18px 20px 30px 25px;
+            width: 660px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.4s;
+            text-align: left;
+            !important box-shadow: 3px 3px 4px #888888;
+            opacity: 0.2;
+        }
+
+        .container1:hover {
+            border: 1px solid #2fc2ee;
+        }
+
+        .avatar {
+            float: left;
+            position: absolute;
+            left: 27px;
+            height: 60px;
+            width: 60px;
+            border-radius: 100px;
+            transition: all 0.4s;
+        }
+
+        /*.avatar:hover {
+  border-radius: 0px;
+}*/
+
+        .tweet-time {
+            float: left;
+            color: #bababa;
+            transition: all 0.4s;
+            border-bottom: 1px solid white;
+        }
+
+        .push {
+            margin-left: 70px;
+        }
+
+        .user::after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        .name {
+            font-weight: bold;
+            transition: all 0.4s;
+            border-bottom: 1px solid white;
+            font-size: larger;
+        }
+
+        .name:hover {
+            border-bottom: 1px solid #121212;
+        }
+
+        .username {
+            font-weight: normal;
+            color: #bababa;
+            margin-left: 10px;
+            border-bottom: 1px solid white;
+        }
+
+        .tweet {
+            margin: 20px 0;
+            font-size: 22px;
+            line-height: 26px;
+            letter-spacing: .01em font-family:"Segoe UI", Arial, sans-serif;
+        }
+
+        .at,
+        .tag {
+            color: #2fc2ee;
+            transition: all 0.4s;
+            border-bottom: 2px solid white;
+        }
+
+        .twitterlogo {
+            float: right;
+        }
+
+
+        .mdl-navigation__link {
+            cursor: pointer;
+        }
+
+        .tabcontent {
+
+            display: none;
+            /*text-align: center;*/
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .site-header {
+            position: relative;
+        }
+
+        .site-header .mdl-layout__header-row {
+            padding: 0;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+
+        .site-description {
+            display: block;
+            font-size: 14px;
+            text-align: center;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .is-compact .mdl-layout__title span {
+            display: none;
+        }
+
+        .site-logo-row {
+            min-height: 100px;
+        }
+
+        .is-compact .site-logo-row {
+            min-height: auto;
+        }
+
+        
+
+        .is-compact .site-logo {
+            height: 50px;
+            width: 50px;
+            margin: 7px auto;
+        }
+
+        .site-navigation-row {
+            background-color: rgba(0, 0, 0, 0.08);
+            text-transform: uppercase;
+            height: 45px;
+        }
+
+        .site-navigation-row .mdl-navigation {
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .site-navigation-row .mdl-navigation__link {
+            -ms-flex: 1;
+            flex: 1;
+            line-height: 42px;
+            color: #fff;
+        }
+
+        .site-navigation-row .is-active {
+            position: relative;
+            font-weight: bold;
+            opacity: 1;
+        }
+
+        .site-navigation-row .mdl-navigation__link:hover {
+            opacity: 1;
+        }
+
+        .mdl-layout__header .mdl-layout__drawer-button {
+            color: #fff;
+        }
+
+        .mdl-layout__content {
+            background-color: #fefefe;
+        }
+
+        .site-content {
+            margin: 1em auto;
+            min-height: 580px;
+        }
+
+        .page-content {
+            padding-bottom: 2em;
+        }
+
+        .site-max-width {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .site-copy {
+            max-width: 700px;
+        }
+
+        .welcome-card>.mdl-card__title {
+            color: #fff;
+            height: 290px;
+            background: url("../img/cover.jpg") center/cover;
+        }
+
+        .event-card {
+            background: #3E4EB8;
+        }
+
+        .event-card .mdl-card__actions {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .event-card .mdl-card__title {
+            -ms-flex-align: start;
+            align-items: flex-start;
+        }
+
+        .event-card .mdl-card__title>h4 {
+            margin-top: 0;
+        }
+
+        .event-card .mdl-card__actions {
+            display: -ms-flexbox;
+            display: flex;
+            box-sizing: border-box;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .event-card .mdl-card__actions>.material-icons {
+            padding-right: 10px;
+        }
+
+        .event-card .mdl-card__title,
+        .event-card .mdl-card__actions,
+        .event-card .mdl-card__actions>.mdl-button {
+            color: #fff;
+        }
+
+        .section__play-btn {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: center;
+            align-items: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            min-height: 150px;
+        }
+
+        .section__play-btn .material-icons {
+            font-size: 3rem;
+        }
+
+        .section--center {
+            margin: 0 auto 2rem;
+        }
+
+        .homepage-portfolio .mdl-button {
+            margin: 0 auto;
+        }
+
+        .mdl-button {
+            margin-left: 5%;
+        }
+
+        .homepage-footer {
+            background: #eee;
+            margin-bottom: -1em;
+            padding: 2rem 0;
+        }
+
+        .portfolio-card .mdl-card__title {
+            padding-bottom: 0;
+        }
+
+        img.article-image {
+            width: 100%;
+            height: auto;
+        }
+
+        .demo-card-image.mdl-card {
+            width: 192px;
+            height: 192px;
+        }
+
+        .person1 {
+            background: url("../img/person1.jpg") center/cover;
+        }
+
+        .person2 {
+            background: url("../img/person2.jpg") center/cover;
+        }
+
+        .demo-card-image>.mdl-card__actions {
+            height: 52px;
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-card-image__filename {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-contact .mdl-textfield {
+            width: 100%;
+        }
+
+        #contact-button {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+        footer .mdl-logo a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dotted #aaa;
+        }
+
+        .footer-container {
+            margin: 0 auto;
+        }
+
+        .hameid-loader-overlay {
+            width: 100%;
+            height: 100%;
+            background: url("https://loading.io/spinners/ellipsis/lg.discuss-ellipsis-preloader.gif") center no-repeat #FFF;
+            z-index: 99999;
+            position: fixed;
+        }
+    </style>
+<meta><meta><meta><meta><meta><meta></head>
+
+<body id="top" style="word-wrap: break-word;">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <a id="contact-button" class="mdl-button mdl-button--fab mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast mdl-shadow--4dp">
+    <i class="material-icons">cached</i></a>
+        <header class="mdl-layout__header mdl-layout__header--waterfall site-header">
+            <div class="mdl-layout__header-row site-logo-row">
+                <span class="mdl-layout__title">
+            <div class="site-logo"></div>
+            <span class="site-description"><h3>Social Talk for Suyati<h 3="">
+            </h></h3></span></span>
+            </div>
+            <div class="mdl-layout__header-row site-navigation-row mdl-layout--large-screen-only">
+                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                    <a class="mdl-navigation__link" style="display:block;">#Suyati</a>
+                    <a class="mdl-navigation__link">#CRM</a>
+                    <a class="mdl-navigation__link">#MSDynamics</a>
+                    <a class="mdl-navigation__link">#Salesforce</a>
+                    <a class="mdl-navigation__link">#CMS</a>
+                </nav>
+            </div>
+        </header>
+        <div class="xcontainer">
+            <div class="container">
+                <div id="suyati" class="tabcontent" style="display: block">
+                    <h3 class="headings1">#Suyati Tweets</h3>
+
+                </div>
+                <div id="crm" class="tabcontent">
+                    <h3 class="headings1">#CRM Tweets</h3>
+
+                </div>
+                <div id="dynamics" class="tabcontent">
+                    <h3 class="headings1">#MSDynamics Tweets</h3>
+
+                </div>
+
+                <div id="salesforce" class="tabcontent">
+                    <h3 class="headings1">#Salesforce Tweets</h3>
+
+                </div>
+                <div id="cms" class="tabcontent">
+                    <h3 class="headings1">#CMS Tweets</h3>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <footer class="mdl-mini-footer">
+            <div class="footer-container">
+                <div class="mdl-logo">© Step 2017 MSDynamics Team : <a href="https://suyati.com/" target="_blank">Suyati</a></div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Privacy &amp; Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+        <div class="hameid-loader-overlay"></div>
+
+    </div>
+
+    <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+        var crmtweet;
+        var salesforcetweet;
+        var suyatitweet;
+        var cmstweet;
+        var dynamicstweet;
+        var existing_tweetid = [];
+        $(document).ready(function() {
+            $('#contact-button').click(function() {
+                location.reload();
+            });
+            $('.mdl-navigation__link').click(function() {
+                var index = $(this).index();
+                switch (index) {
+                    case 0:
+                        $('#suyati').show();
+                        $('#crm').hide();
+                        $('#dynamics').hide();
+                        $('#salesforce').hide();
+                        $('#cms').hide();
+                        break;
+                    case 1:
+                        $('#crm').show();
+                        $('#suyati').hide();
+                        $('#dynamics').hide();
+                        $('#salesforce').hide();
+                        $('#cms').hide();
+                        break;
+                    case 2:
+                        $('#dynamics').show();
+                        $('#crm').hide();
+                        $('#suyati').hide();
+                        $('#salesforce').hide();
+                        $('#cms').hide();
+                        break;
+                    case 3:
+                        $('#salesforce').show();
+                        $('#crm').hide();
+                        $('#dynamics').hide();
+                        $('#suyati').hide();
+                        $('#cms').hide();
+                        break;
+                    case 4:
+                        $('#cms').show();
+                        $('#crm').hide();
+                        $('#dynamics').hide();
+                        $('#salesforce').hide();
+                        $('#suyati').hide();
+                        break;
+                }
+            });
+
+
+
+
+            var clientURL = parent.Xrm.Page.context.getClientUrl();
+            var req = new XMLHttpRequest();
+            var query = "/api/data/v9.0/syt_tweetidvals/";
+            req.open("GET", encodeURI(clientURL + query), false);
+            req.setRequestHeader("Accept", "application/json");
+            req.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+            req.setRequestHeader("OData-MaxVersion", "4.0");
+            req.setRequestHeader("OData-Version", "4.0");
+            req.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    req.onreadystatechange = null;
+                    if (this.status == 200) {
+
+                        //var uri = this.getResponseHeader("OData-EntityId");
+                        // contactid = uri.substring(uri.lastIndexOf("(") + 1, uri.lastIndexOf(")"));
+                        var result = JSON.parse(this.response);
+                        for (var i = 0; i < result.value.length; i++) {
+                            existing_tweetid[i] = result.value[i].syt_tweetidforvalidation;
+
+                        }
+
+
+                    } else {
+                        var error = JSON.parse(this.response).error;
+                        alert("Error retrieving Record – " + error.message);
+                    }
+                }
+            };
+            req.send();
+
+
+
+
+            var serverURL = parent.Xrm.Page.context.getClientUrl();
+            var query = "syt_gettweetsplugin";
+            var req = new XMLHttpRequest();
+            req.open("POST", serverURL + "/api/data/v9.0/" + query + "", true);
+            req.setRequestHeader("Accept", "application/json");
+            req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            req.setRequestHeader("OData-MaxVersion", "4.0");
+            req.setRequestHeader("OData-Version", "4.0");
+            req.send();
+            req.onreadystatechange = function() {
+                if (this.readyState == 4 /* complete */ ) {
+                    req.onreadystatechange = null;
+                    if (this.status == 200) {
+                        result = JSON.parse(this.response);
+
+                        var all = JSON.parse(result.crmtweets);
+                        crmtweet = all.statuses;
+                        var all1 = JSON.parse(result.suyatitweets);
+                        suyatitweet = all1.statuses;
+                        var all2 = JSON.parse(result.cmstweets);
+                        cmstweet = all2.statuses;
+                        var all3 = JSON.parse(result.salesforcetweets);
+                        salesforcetweet = all3.statuses;
+                        var all4 = JSON.parse(result.dynamicstweets);
+                        dynamicstweet = all4.statuses;
+                        populatecrm();
+                        populatecms();
+                        populatesuyati();
+                        populatesalesforce();
+                        populatedynamics();
+                    } else {
+                        var error = JSON.parse(this.response).error;
+                        //alert("Authentication Required.....");
+                        $(".container").hide();
+                        $(".xcontainer").append("<h3>Please Authenticate</h3></br><p>Go to Configuration</p>");
+                    }
+                }
+            };
+
+            function populatecrm() {
+
+                for (var t in crmtweet) {
+                    $('#crm').append("<div id=crm" + t + "></div>");
+                    var dateUTC = new Date(crmtweet[t].created_at);
+                    var dateUTC = dateUTC.getTime()
+                    var dateIST = new Date(dateUTC);
+                    if (existing_tweetid.indexOf(crmtweet[t].id_str) != -1) {
+                        $('#crm' + t).append("</br><div class=wrap><div class=container2><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + crmtweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + crmtweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + crmtweet[t].user.name + "</span></a><span class=username>@" + crmtweet[t].user.screen_name + "</span></div></div><p class=tweet>" + crmtweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                    } else {
+                        $('#crm' + t).append("</br><div class=wrap><div class=container1><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + crmtweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + crmtweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + crmtweet[t].user.name + "</span></a><span class=username>@" + crmtweet[t].user.screen_name + "</span></div></div><p class=tweet>" + crmtweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+
+                        $('#crm' + t).append("<button id=" + crmtweet[t].id_str + " name=" + t + " value=\"crmtweet\"  onclick=fun(this)>Generate Activity</button><button id=r" + crmtweet[t].id_str + " name= " +t + " value=\"crmtweet\"  onclick=fun1(this)>Thank You </button><button id=reply" + crmtweet[t].id_str + " onclick=fun2(this)  >Reply </button></br>");
+                        $('#' + crmtweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#r' + crmtweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#reply'+ crmtweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                    }
+                }
+
+            }
+
+            function populatesuyati() {
+
+                for (var t in suyatitweet) {
+                    $('#suyati').append("<div id=suyati" + t + "></div>");
+                    var dateUTC = new Date(suyatitweet[t].created_at);
+                    var dateUTC = dateUTC.getTime()
+                    var dateIST = new Date(dateUTC);
+                    if (existing_tweetid.indexOf(suyatitweet[t].id_str) != -1) {
+                        $('#suyati' + t).append("</br><div class=wrap><div class=container2><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + suyatitweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + suyatitweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + suyatitweet[t].user.name + "</span></a><span class=username>@" + suyatitweet[t].user.screen_name + "</span></div></div><p class=tweet>" + suyatitweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                    } else {
+
+                        $('#suyati' + t).append("</br><div class=wrap><div class=container1><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + suyatitweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + suyatitweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + suyatitweet[t].user.name + "</span></a><span class=username>@" + suyatitweet[t].user.screen_name + "</span></div></div><p class=tweet>" + suyatitweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                        $('#suyati' + t).append("<button id=" + suyatitweet[t].id_str + " name=" + t + " value=\"suyatitweet\"  onclick=fun(this)>Generate Activity</button><button id=r" + suyatitweet[t].id_str + " name= " +t + " value=\"suyatitweet\"  onclick=fun1(this)>Thank You </button><button id=reply" + suyatitweet[t].id_str + " onclick=fun2(this)  >Reply </button></br>");
+                        $('#' + suyatitweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#r' + suyatitweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#reply'+ suyatitweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                    }
+
+                }
+
+            }
+
+            function populatecms() {
+                for (var t in cmstweet) {
+                    $('#cms').append("<div id=cms" + t + "></div>");
+                    var dateUTC = new Date(cmstweet[t].created_at);
+                    var dateUTC = dateUTC.getTime()
+                    var dateIST = new Date(dateUTC);
+                    if (existing_tweetid.indexOf(cmstweet[t].id_str) != -1) {
+                        $('#cms' + t).append("</br><div class=wrap><div class=container2><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + cmstweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + cmstweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + cmstweet[t].user.name + "</span></a><span class=username>@" + cmstweet[t].user.screen_name + "</span></div></div><p class=tweet>" + cmstweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                    } else {
+                        $('#cms' + t).append("</br><div class=wrap><div class=container1><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + cmstweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + cmstweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + cmstweet[t].user.name + "</span></a><span class=username>@" + cmstweet[t].user.screen_name + "</span></div></div><p class=tweet>" + cmstweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+
+                        $('#cms' + t).append("<button id=" + cmstweet[t].id_str + " name=" + t + " value=\"cmstweet\"  onclick=fun(this)>Generate Activity</button><button id=r" + cmstweet[t].id_str + " name= " +t + " value=\"cmstweet\"  onclick=fun1(this)>Thank You </button><button id=reply" + cmstweet[t].id_str + " onclick=fun2(this)  >Reply </button></br>");
+                        $('#' + cmstweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#r' + cmstweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#reply'+ cmstweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+
+                    }
+                }
+            }
+
+            function populatedynamics() {
+
+                for (var t in dynamicstweet) {
+                    $('#dynamics').append("<div id=dynamics" + t + "></div>");
+                    var dateUTC = new Date(dynamicstweet[t].created_at);
+                    var dateUTC = dateUTC.getTime()
+                    var dateIST = new Date(dateUTC);
+                    if (existing_tweetid.indexOf(dynamicstweet[t].id_str) != -1) {
+                        $('#dynamics' + t).append("</br><div class=wrap><div class=container2><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + dynamicstweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + dynamicstweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + dynamicstweet[t].user.name + "</span></a><span class=username>@" + dynamicstweet[t].user.screen_name + "</span></div></div><p class=tweet>" + dynamicstweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                    } else {
+                        $('#dynamics' + t).append("</br><div class=wrap><div class=container1><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + dynamicstweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + dynamicstweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + dynamicstweet[t].user.name + "</span></a><span class=username>@" + dynamicstweet[t].user.screen_name + "</span></div></div><p class=tweet>" + dynamicstweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+
+                        $('#dynamics' + t).append("<button id=" + dynamicstweet[t].id_str + " name=" + t + " value=\"dynamicstweet\"  onclick=fun(this)>Generate Activity</button><button id=r" + dynamicstweet[t].id_str + " name= " +t + " value=\"dynamicstweet\"  onclick=fun1(this)>Thank You </button><button id=reply" + dynamicstweet[t].id_str + " onclick=fun2(this)  >Reply </button></br>");
+                        $('#' + dynamicstweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                         $('#r' + dynamicstweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#reply'+ dynamicstweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+
+                    }
+                }
+            }
+
+            function populatesalesforce() {
+
+                for (var t in salesforcetweet) {
+                    $('#salesforce').append("<div id=salesforce" + t + "></div>");
+                    var dateUTC = new Date(salesforcetweet[t].created_at);
+                    var dateUTC = dateUTC.getTime()
+                    var dateIST = new Date(dateUTC);
+                    if (existing_tweetid.indexOf(salesforcetweet[t].id_str) != -1) {
+                        $('#salesforce' + t).append("</br><div class=wrap><div class=container2><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + salesforcetweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + salesforcetweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + salesforcetweet[t].user.name + "</span></a><span class=username>@" + salesforcetweet[t].user.screen_name + "</span></div></div><p class=tweet>" + salesforcetweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                    } else {
+                        $('#salesforce' + t).append("</br><div class=wrap><div class=container1><a href=\"https://twitter.com\" target=_blank><img src=\"https://tctechcrunch2011.files.wordpress.com/2012/06/twitter-bird.png\" alt=avatar width=40px class=twitterlogo  /></a><img src=\"" + salesforcetweet[t].user.profile_image_url_https + "\"  class=avatar /><div class=push><div class=user><div class=user-string><a href=\"https://twitter.com/" + salesforcetweet[t].user.screen_name + "\"target=_blank style=\"color:black\"><span class=name>" + salesforcetweet[t].user.name + "</span></a><span class=username>@" + salesforcetweet[t].user.screen_name + "</span></div></div><p class=tweet>" + salesforcetweet[t].text + "</p><time class=tweet-time>" + dateIST.toLocaleString() + "</time></div></div></div></br>");
+                        $('#salesforce' + t).append("<button id=" + salesforcetweet[t].id_str + " name=" + t + " value=\"salesforcetweet\"  onclick=fun(this)>Generate Activity</button><button id=r" + salesforcetweet[t].id_str + " name= " +t + " value=\"salesforcetweet\"  onclick=fun1(this)>Thank You </button><button id=reply" + salesforcetweet[t].id_str + " onclick=fun2(this)  >Reply </button></br>");
+                        $('#' + salesforcetweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");  
+                        $('#r' + salesforcetweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+                        $('#reply'+ salesforcetweet[t].id_str).addClass("mdl-button mdl-button--raised mdl-js-button mdl-js-ripple-effect mdl-button--accent");
+
+
+
+                    }
+
+
+                }
+            }
+        });
+            var tweetMessage="Thank You";
+            var retweetmsg;
+
+            function fun1(element)
+            {
+                debugger;
+                    retweetmsg = element.id.replace("r","") + " " + window[element.value][parseInt(element.name)].user.screen_name + " " + "thanks"+" "+"nil";
+                    var organizationUrl = parent.Xrm.Page.context.getClientUrl();
+                    var data = {
+                        "Retweetid": retweetmsg,
+                        "Message": tweetMessage
+                    };
+                    var req = new XMLHttpRequest();
+                    req.open("POST", organizationUrl + "/api/data/v9.0/syt_retweet/", false);
+                    req.setRequestHeader("Accept", "application/json");
+                    req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                    req.setRequestHeader("OData-MaxVersion", "4.0");
+                    req.setRequestHeader("OData-Version", "4.0");
+                    req.onreadystatechange = function() {
+                        if (this.readyState == 4) {
+                            req.onreadystatechange = null;
+                            if (this.status == 200) {
+                                alert("Action called successfully");
+
+                            } else {
+                                var error = JSON.parse(this.response).error;
+                                alert(error.message);
+                                
+                            }
+                        }
+                    };
+
+                    req.send(window.JSON.stringify(data));
+
+
+                   
+                     $('#' + element.id).hide();
+                   $('#' + element.id.replace("r","")).hide();
+                    $('#reply' + element.id.replace("r","")).hide();
+                    $('#' + element.value.replace("tweet", "") + element.name).css("opacity", "0.2");
+                    $('#' + element.value.replace("tweet", "") + element.name).after("<div id=snackbar1>Tweeted Thank You</div>");
+                    var x = document.getElementById("snackbar1")
+                    x.className = "show";
+                    setTimeout(function() {
+                    x.className = x.className.replace("show", "");
+                    
+                    $("#snackbar1").attr("id","invisible");
+                    }, 3000);
+
+                    var tweetpostentity = {};
+                    tweetpostentity["syt_tweetidforvalidation"] = window[element.value][parseInt(element.name)].id_str;
+
+
+                    
+                    var req7 = new XMLHttpRequest();
+                    req7.open("POST", organizationUrl + "/api/data/v9.0/syt_tweetidvals", false);
+                    req7.setRequestHeader("Accept", "application/json");
+                    req7.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                    req7.setRequestHeader("OData-MaxVersion", "4.0");
+                    req7.setRequestHeader("OData-Version", "4.0");
+                    req7.setRequestHeader("Prefer", "return=representation");
+                    req7.onreadystatechange = function() {
+                        if (this.readyState == 4 /* complete */ ) {
+                            req1.onreadystatechange = null;
+                            if (this.status == 201) {
+                                var tweetUri = this.getResponseHeader("OData-EntityId");
+                            } else {
+                                var error = JSON.parse(this.response).error;
+                                alert(error.message);
+                            }
+                        }
+                    };
+                    req7.send(JSON.stringify(tweetpostentity));
+                
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function fun(element) {
+            var contactid;
+            var tid = [];
+            var cid = [];
+
+
+            debugger;
+           
+
+
+
+
+            var clientURL = parent.Xrm.Page.context.getClientUrl();
+            var req = new XMLHttpRequest();
+            var query = "/api/data/v9.0/contacts/";
+            req.open("GET", encodeURI(clientURL + query), false);
+            req.setRequestHeader("Accept", "application/json");
+            req.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+            req.setRequestHeader("OData-MaxVersion", "4.0");
+            req.setRequestHeader("OData-Version", "4.0");
+            req.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    req.onreadystatechange = null;
+                    if (this.status == 200) {
+
+                        //var uri = this.getResponseHeader("OData-EntityId");
+                        // contactid = uri.substring(uri.lastIndexOf("(") + 1, uri.lastIndexOf(")"));
+                        var result = JSON.parse(this.response);
+                        for (var i = 0; i < result.value.length; i++) {
+                            tid[i] = result.value[i].syt_twitterid;
+                            cid[i] = result.value[i].contactid;
+                        }
+
+
+                    } else {
+                        var error = JSON.parse(this.response).error;
+                        alert("Error retrieving Record – " + error.message);
+                    }
+                }
+            };
+            req.send();
+
+
+
+
+            if (tid.indexOf(window[element.value][parseInt(element.name)].user.screen_name) == -1) {
+                var entity = {};
+                entity.lastname = window[element.value][parseInt(element.name)].user.name;
+                entity.syt_twitterid = window[element.value][parseInt(element.name)].user.screen_name;
+                var clientURL = parent.Xrm.Page.context.getClientUrl();
+                var req = new XMLHttpRequest();
+                var query = "/api/data/v9.0/contacts/";
+                req.open("POST", encodeURI(clientURL + query), false);
+                req.setRequestHeader("Accept", "application/json");
+                req.setRequestHeader("Content-Type", "application/json;charset=utf-8");
+                req.setRequestHeader("OData-MaxVersion", "4.0");
+                req.setRequestHeader("OData-Version", "4.0");
+                req.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        req.onreadystatechange = null;
+                        if (this.status == 204) {
+
+                            var uri = this.getResponseHeader("OData-EntityId");
+                            contactid = uri.substring(uri.lastIndexOf("(") + 1, uri.lastIndexOf(")"));
+
+
+                        } else {
+                            var error = JSON.parse(this.response).error;
+                            alert("Error retrieving Record – " + error.message);
+                        }
+                    }
+                };
+                req.send(JSON.stringify(entity));
+                // $('#' + element.value.replace("tweet", "") + element.name).after("<h5  style=\"margin-left:25%\">New Contact Created</5>");
+                // Materialize.toast('Contact Created', 4000);
+                /* $('#' + element.value.replace("tweet", "") + element.name).after("<div id=snackbar1 >New Contact Created</div>");
+                 var x = document.getElementById("snackbar1")
+                 x.className = "show";
+                 setTimeout(function(){ x.className = x.className.replace("show", ""); }, 4000);*/
+
+
+            } else {
+                var ind = tid.indexOf(window[element.value][parseInt(element.name)].user.screen_name)
+                contactid = cid[ind]
+            }
+
+
+
+            if (contactid != null) {
+                var contactguid = contactid.replace("\"", "");
+                var tweet = {};
+                tweet["syt_tweetid"] = window[element.value][parseInt(element.name)].id_str;
+                tweet["syt_twitterhandle"] = window[element.value][parseInt(element.name)].user.screen_name;
+                tweet["regardingobjectid_contact@odata.bind"] = "/contacts(" + contactguid + ")";
+                tweet["syt_hashtag"] = "#" + element.value.replace("tweet", "");
+                tweet["subject"] = "#" + element.value.replace("tweet", "") + " - " + window[element.value][parseInt(element.name)].user.screen_name;
+                tweet["syt_tweetcontent"] = window[element.value][parseInt(element.name)].text;
+                var dateUTC = new Date(window[element.value][parseInt(element.name)].created_at);
+                var dateUTC = dateUTC.getTime()
+                var dateIST = new Date(dateUTC);
+                tweet["syt_tweetedon"] = dateIST;
+                var req1 = new XMLHttpRequest();
+                req1.open("POST", clientURL + "/api/data/v9.0/syt_tweets", false);
+                req1.setRequestHeader("Accept", "application/json");
+                req1.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                req1.setRequestHeader("OData-MaxVersion", "4.0");
+                req1.setRequestHeader("OData-Version", "4.0");
+                req1.setRequestHeader("Prefer", "return=representation");
+                req1.onreadystatechange = function() {
+                    if (this.readyState == 4 /* complete */ ) {
+                        req1.onreadystatechange = null;
+                        if (this.status == 201) {
+                            var tweetUri = this.getResponseHeader("OData-EntityId");
+                        } else {
+                            var error = JSON.parse(this.response).error;
+                            alert(error.message);
+                        }
+                    }
+                };
+                req1.send(JSON.stringify(tweet));
+
+                var tweetpostentity = {};
+                tweetpostentity["syt_tweetidforvalidation"] = window[element.value][parseInt(element.name)].id_str;
+
+
+                tweetpostentity["syt_regardingcontact@odata.bind"] = "/contacts(" + contactguid + ")";
+                var req7 = new XMLHttpRequest();
+                req7.open("POST", clientURL + "/api/data/v9.0/syt_tweetidvals", false);
+                req7.setRequestHeader("Accept", "application/json");
+                req7.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                req7.setRequestHeader("OData-MaxVersion", "4.0");
+                req7.setRequestHeader("OData-Version", "4.0");
+                req7.setRequestHeader("Prefer", "return=representation");
+                req7.onreadystatechange = function() {
+                    if (this.readyState == 4 /* complete */ ) {
+                        req1.onreadystatechange = null;
+                        if (this.status == 201) {
+                            var tweetUri = this.getResponseHeader("OData-EntityId");
+                        } else {
+                            var error = JSON.parse(this.response).error;
+                            alert(error.message);
+                        }
+                    }
+                };
+                req7.send(JSON.stringify(tweetpostentity));
+
+                $('#' + element.id).hide();
+                $('#r' + element.id).hide();
+                $('#reply' + element.id).hide();
+                // $('#' + element.value.replace("tweet", "") + element.name).after("<h5  style=\"margin-left:26.5%\">Activity Generated</5>");
+                $('#' + element.value.replace("tweet", "") + element.name).css("opacity", "0.2");
+                $('#' + element.value.replace("tweet", "") + element.name).after("<div id=snackbar>Activity Generated</div>");
+                var x = document.getElementById("snackbar")
+                x.className = "show";
+                setTimeout(function() {
+                    x.className = x.className.replace("show", "");
+                    
+                    $("#snackbar").attr("id","invisible");
+                }, 3000);
+
+            }
+
+        }
+
+        $(window).load(function() {
+            jQuery(".hameid-loader-overlay").delay(5000).fadeOut(500);
+        });
+    </script>
+
+
+
+
+
+</body></html>

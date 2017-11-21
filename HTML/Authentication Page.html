@@ -1,0 +1,197 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+    <title>Authenticate Twitter API</title>
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        body {
+            background: #3f51b5;
+            !important
+        }
+
+        button {
+            background: rgb(255, 64, 129);
+            !important
+        }
+
+        .input-field input[type=date]:focus+label,
+        .input-field input[type=text]:focus+label,
+        .input-field input[type=email]:focus+label,
+        .input-field input[type=password]:focus+label {
+            color: #e91e63;
+        }
+
+        .input-field input[type=date]:focus,
+        .input-field input[type=text]:focus,
+        .input-field input[type=email]:focus,
+        .input-field input[type=password]:focus {
+            border-bottom: 2px solid #e91e63;
+            box-shadow: none;
+        }
+    </style>
+
+</head>
+
+<body style="word-wrap: break-word;">
+
+    <main>
+        <center>
+            <img class="responsive-img" style="width: 120px;" src="https://cdn1.iconfinder.com/data/icons/iconza-circle-social/64/697029-twitter-512.png">
+
+
+            <h2 class="white-text">Social Talk for Suyati</h2>
+
+
+            <div class="container">
+                <div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+                    <div class="col s12">
+                        <div class="row">
+                            <div class="col s12">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" type="text" name="email" id="key">
+                                <label for="email">Consumer Key (API Key)</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" type="text" name="password" id="secret">
+                                <label for="password">Consumer Secret (API Secret)</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" type="text" name="email" id="accesstoken">
+                                <label for="email">Access Token</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input class="validate" type="text" name="password" id="accesssecret">
+                                <label for="password">Access Token Secret</label>
+                            </div>
+                            <label style="float: right;font-size: 14px;">
+                <a class="black-text" href="https://www.slickremix.com/docs/how-to-get-api-keys-and-tokens-for-twitter/" target="_blank"><b>How to get Twitter API/b></a>
+              </label>
+                        </div>
+                        <br>
+                        <center>
+
+                            <div class="row">
+                                <!--  <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect pink'><h6 style="float: left">Authenticate</h6> <i style="float: left class="material-icons">vpn_key</i></button> -->
+                                <button name="btn_login" id="buttonclick" class="col s12 btn btn-large waves-effect waves-light pink"><i class="material-icons right">vpn_key</i>Authenticate</button>
+
+                            </div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+
+        </center>
+
+        <div class="section"></div>
+        <div class="section"></div>
+    </main>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+    <script>
+        //function for converting base 64 code to UTF8
+        function b64EncodeUnicode(str) {
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+                return String.fromCharCode(parseInt(p1, 16))
+            }))
+        }
+
+        $(document).ready(function() {
+            //debugger;
+            var cred;
+            var credtoutf;
+            var consumerkey;
+            var consumersecret;
+            var accesstokenkey;
+            var accesssecretkey;
+            var result;
+            var crmtweet;
+
+            $('#buttonclick').click(function() {
+                debugger;
+
+                consumerkey = $("#key").val();
+                consumersecret = $("#secret").val();
+                accesstokenkey = $("#accesstoken").val();
+                accesssecretkey = $("#accesssecret").val();
+
+                cred = consumerkey + ":" + consumersecret;
+
+
+                credtoutf = b64EncodeUnicode(cred);
+
+
+                var param = credtoutf.toString();
+
+                var data = {
+
+                    "syt_twitterauth": param,
+                    "syt_consumerkey": consumerkey.toString(),
+                    "syt_consumersecret": consumersecret.toString(),
+                    "syt_accesstoken": accesstokenkey.toString(),
+                    "syt_accesstokensecret": accesssecretkey.toString()
+
+                };
+                //webapi to create a reacord in twitter credential entity to save all creadential for authenticate
+                var serverURL = parent.Xrm.Page.context.getClientUrl();
+                var query = "syt_twittercredentials";
+                var req = new XMLHttpRequest();
+                req.open("POST", serverURL + "/api/data/v9.0/" + query + "", false);
+                req.setRequestHeader("Accept", "application/json");
+                req.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+                req.setRequestHeader("OData-MaxVersion", "4.0");
+                req.setRequestHeader("OData-Version", "4.0");
+
+                req.onreadystatechange = function() {
+                    if (this.readyState == 4 /* complete */ ) {
+                        req.onreadystatechange = null;
+                        if (this.status == 204) {
+
+                            alert("Authenticated");
+
+
+                        } else {
+                            var error = JSON.parse(this.response).error;
+                            alert(error.message);
+                        }
+                    }
+                };
+                req.send(JSON.stringify(data));
+                location.reload();
+            });
+
+
+        });
+    </script>
+
+
+</body>
+
+</html>
